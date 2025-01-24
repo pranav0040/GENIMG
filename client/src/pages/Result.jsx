@@ -5,9 +5,13 @@ const Result = () => {
   const [image,setImage]=useState(assets.sample_img_1);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [loading,setLoading]=useState(false);
+  const [input,setInput]=useState('');
+  const onSubmitHandler = async(e)=>{
+
+  }
 
   return (
-    <form className="flex flex-col min-h-[90vh] justify-center items-center"> 
+    <form className="flex flex-col min-h-[90vh] justify-center items-center" onSubmit={onSubmitHandler}> 
     <div>
       <div className="relative ">
         <img className="max-w-sm rounded" src={image} alt="sample"/>
@@ -18,7 +22,7 @@ const Result = () => {
 
      {!isImageLoaded && 
       <div className="flex w-full max-w-xl bg-neutral-500  text-white text-sm p-0.5 mt-10 rounded-full">
-<input type="text" className="flex-1 bg-transparent outline-none ml-8 max-sm:w-20 placeholder-color" placeholder="Describe what you want to generate "/>
+<input type="text" className="flex-1 bg-transparent outline-none ml-8 max-sm:w-20 placeholder-color" onChange={e=>setInput(e.target.value)} placeholder="Describe what you want to generate " value={input}/>
 <button type="submit" className="bg-zinc-900 px-10 sm:px-16 py-3 rounded-full">Generate</button>
       </div>
 }
